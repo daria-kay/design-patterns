@@ -1,6 +1,6 @@
-package main.java.com.orm.secondormlib;
+package com.orm.secondormlib;
 
-import main.java.com.orm.IDbEntity;
+import com.orm.IDbEntity;
 
 public class DbUserEntity implements IDbEntity {
     private int id;

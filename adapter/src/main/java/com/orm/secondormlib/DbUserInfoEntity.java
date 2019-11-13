@@ -1,6 +1,7 @@
-package main.java.com.orm.secondormlib;
+package com.orm.secondormlib;
 
-import main.java.com.orm.IDbEntity;
+
+import com.orm.IDbEntity;
 
 import java.sql.Date;
 

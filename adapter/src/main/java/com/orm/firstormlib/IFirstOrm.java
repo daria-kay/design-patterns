@@ -1,6 +1,7 @@
-package main.java.com.orm.firstormlib;
+package com.orm.firstormlib;
 
-import main.java.com.orm.IDbEntity;
+
+import com.orm.IDbEntity;
 
 public interface IFirstOrm<TDbEntity extends IDbEntity> {
     void add(TDbEntity entity);

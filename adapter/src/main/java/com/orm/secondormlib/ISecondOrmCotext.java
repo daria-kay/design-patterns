@@ -1,4 +1,4 @@
-package main.java.com.orm.secondormlib;
+package com.orm.secondormlib;
 
 import java.util.HashSet;
 
