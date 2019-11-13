@@ -31,9 +31,13 @@ public class UserRepoAdapter implements UserRepo {
                 .get();
 
         Role userRole = roles.read(roleId);
-        User user = new User(userEntity.getId(),
-                userEntity.getLogin(),
-                infoEntity.getName(), infoEntity.getBirthDate(), userRole);
+        User user = User.builder()
+                .id(userEntity.getId())
+                .login(userEntity.getLogin())
+                .name(infoEntity.getName())
+                .birthDate(infoEntity.getBirthDate())
+                .role(userRole)
+                .build();
         users.add(user);
         return user.getId();
     }
