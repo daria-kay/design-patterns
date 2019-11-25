@@ -12,6 +12,7 @@
         <module>adapter</module>
         <module>builder</module>
         <module>decorator</module>
+        <module>chainofresp</module>
     </modules>
 
     <properties>
