@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class IntermediateResult {
+public class ResultOfCashing {
     private List<Banknote> banknotes;
     private Banknote.Builder banknoteBuilder;
     private int remains;
 
-    public IntermediateResult(int initialValue, Banknote.Builder banknoteBuilder) {
+    public ResultOfCashing(int initialValue, Banknote.Builder banknoteBuilder) {
         this.remains = initialValue;
         this.banknoteBuilder = banknoteBuilder;
         this.banknotes = new ArrayList<>();

@@ -1,9 +1,10 @@
 package com.darakay.patterns.chainofresp.handlers;
 
+import com.darakay.patterns.chainofresp.ResultOfCashing;
 import com.darakay.patterns.chainofresp.banknote.Banknote;
 import com.darakay.patterns.chainofresp.banknote.CurrencyType;
 
-public class DollarHandler extends CurrencyHandler {
+public class DollarHandler extends BanknoteHandler {
     public DollarHandler(BanknoteHandler handler) {
         super(handler);
     }
@@ -16,11 +17,11 @@ public class DollarHandler extends CurrencyHandler {
     }
 
     @Override
-    protected Banknote.Builder getBanknoteBuilder(String currency) {
+    protected ResultOfCashing defineCurrency(int sum, String currency) {
         if("$".equalsIgnoreCase(currency)) {
-            super.buildChainOfCashingHandlers();
-            return Banknote.withCurrency(CurrencyType.DOLLAR);
+            super.setNextChainOfCashingHandlers();
+            return super.cashOutConcreteCurrency(new ResultOfCashing(sum, Banknote.withCurrency(CurrencyType.DOLLAR)));
         }
-        return super.getBanknoteBuilder(currency);
+        return super.defineCurrency(sum, currency);
     }
 }

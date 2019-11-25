@@ -1,7 +1,8 @@
 package com.darakay.patterns.chainofresp.handlers;
 
-import com.darakay.patterns.chainofresp.IntermediateResult;
+import com.darakay.patterns.chainofresp.ResultOfCashing;
 import com.darakay.patterns.chainofresp.banknote.Banknote;
+import com.darakay.patterns.chainofresp.handlers.money_unit_handlers.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,25 +21,29 @@ public abstract class BanknoteHandler {
 
     public final List<Banknote> cashOut(String cashRequest){
         String[] queries = cashRequest.split(" ");
-        Banknote.Builder banknoteBuilder = getBanknoteBuilder(queries[1]);
         int sum = Integer.parseInt(queries[0]);
-        return cashOut(new IntermediateResult(sum, banknoteBuilder)).getBanknotes();
+        return defineCurrency(sum, queries[1]).getBanknotes();
     }
 
-    final void setNext(BanknoteHandler handler){
+    final void setNextChainOfCashingHandlers() {
+        BanknoteHandler handler = new FiftyMoneyUnitHandler(null);
+        handler = new HundredMoneyUnitHandler(handler);
+        handler = new FiveHundredMoneyUnitHandler(handler);
+        handler = new ThousandMoneyUnitHandler(handler);
+        handler = new FiveThousandMoneyUnitHandlers(handler);
         this.next = handler;
     }
 
-    protected Banknote.Builder getBanknoteBuilder(String currency){
+    protected ResultOfCashing defineCurrency(int sum, String currency){
         if(Objects.nonNull(next))
-            return next.getBanknoteBuilder(currency);
+            return next.defineCurrency(sum, currency);
         else throw new IllegalArgumentException();
     }
 
-    protected IntermediateResult cashOut(IntermediateResult intermediateResult)  {
+    protected ResultOfCashing cashOutConcreteCurrency(ResultOfCashing resultOfCashing)  {
         if(Objects.nonNull(this.next)){
-            return next.cashOut(intermediateResult);
+            return next.cashOutConcreteCurrency(resultOfCashing);
         }
-        return intermediateResult;
+        return resultOfCashing;
     }
 }

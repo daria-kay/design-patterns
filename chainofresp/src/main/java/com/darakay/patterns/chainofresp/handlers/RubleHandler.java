@@ -1,9 +1,10 @@
 package com.darakay.patterns.chainofresp.handlers;
 
+import com.darakay.patterns.chainofresp.ResultOfCashing;
 import com.darakay.patterns.chainofresp.banknote.Banknote;
 import com.darakay.patterns.chainofresp.banknote.CurrencyType;
 
-public class RubleHandler extends CurrencyHandler {
+public class RubleHandler extends BanknoteHandler {
 
     private static final CurrencyType RUBLE = CurrencyType.RUBLE;
 
@@ -19,11 +20,11 @@ public class RubleHandler extends CurrencyHandler {
     }
 
     @Override
-    protected Banknote.Builder getBanknoteBuilder(String currency) {
+    protected ResultOfCashing defineCurrency(int sum, String currency) {
         if("rub".equalsIgnoreCase(currency)){
-            super.buildChainOfCashingHandlers();
-            return Banknote.withCurrency(CurrencyType.RUBLE);
+            super.setNextChainOfCashingHandlers();
+            return super.cashOutConcreteCurrency(new ResultOfCashing(sum, Banknote.withCurrency(CurrencyType.RUBLE)));
         }
-        return super.getBanknoteBuilder(currency);
+        return super.defineCurrency(sum, currency);
     }
 }
