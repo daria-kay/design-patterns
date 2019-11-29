@@ -5,30 +5,30 @@ import com.darakay.patterns.state.exception.CopyMachineException;
 
 import java.util.List;
 
-public class InitialState extends MachineState {
+public class SettingDeviceState extends MachineState {
 
-    public InitialState(CopyMachine copyMachine) {
+    SettingDeviceState(CopyMachine copyMachine) {
         super(copyMachine);
     }
 
     @Override
     public void depositMoney(int sum) {
         copyMachine.increaseDepositValue(sum);
-        super.copyMachine.setState(new SettingDeviceState(super.copyMachine));
     }
 
     @Override
     public String printDocument(String document) {
-        throw new CopyMachineException("Деньги не были внесены!");
+        throw new CopyMachineException("Устройство не было выбранно!");
     }
 
     @Override
     public void setDevice(Device device) {
-        throw new CopyMachineException("Деньги не были внесены!");
+        copyMachine.setState(new ReadyToPrintState(device, super.copyMachine));
     }
 
     @Override
     public List<String> getAllDocumentNames() {
-        throw new CopyMachineException("Деньги не были внесены!");
+        throw new CopyMachineException("Устройство не было выбранно!");
     }
+
 }

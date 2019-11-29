@@ -20,6 +20,4 @@ public abstract class MachineState {
 
     public abstract List<String> getAllDocumentNames();
 
-    public abstract int getCash();
-
 }
