@@ -1,6 +1,7 @@
 package com.darakay.patterns.visitor;
 
 import com.darakay.patterns.visitor.figures.Circle;
+import com.darakay.patterns.visitor.figures.Figure;
 import com.darakay.patterns.visitor.figures.Point;
 import com.darakay.patterns.visitor.figures.RegularPolygon;
 

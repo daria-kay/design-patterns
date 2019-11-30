@@ -4,31 +4,37 @@ import com.darakay.patterns.visitor.figures.Circle;
 import com.darakay.patterns.visitor.figures.Figure;
 import com.darakay.patterns.visitor.figures.Point;
 import com.darakay.patterns.visitor.figures.RegularPolygon;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
+import java.util.ArrayList;
+import java.util.List;
+
 public class Shifter implements Visitor {
     private int xOffset;
     private int yOffset;
 
+    public Shifter(int xOffset, int yOffset) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+    }
+
     @Getter
-    private Figure offsetFigure;
+    private List<Figure> offsetFigures = new ArrayList<>();
 
     @Override
     public void visit(Circle circle) {
-        offsetFigure = new Circle(newCenter(circle.getCenter()), circle.getRadius());
+        offsetFigures.add(new Circle(newCenter(circle.getCenter()), circle.getRadius()));
     }
 
     @Override
     public void visit(RegularPolygon regularPolygon) {
-        offsetFigure = new RegularPolygon(newCenter(regularPolygon.getCenter()), regularPolygon.getRadius(),
-                regularPolygon.getAngleNumber(), regularPolygon.getSideLength());
+        offsetFigures.add(new RegularPolygon(newCenter(regularPolygon.getCenter()), regularPolygon.getRadius(),
+                regularPolygon.getAngleNumber(), regularPolygon.getSideLength()));
     }
 
     @Override
     public void visit(Point point) {
-        offsetFigure = newCenter(point);
+        offsetFigures.add(newCenter(point));
     }
 
     private Point newCenter(Point oldCenter){

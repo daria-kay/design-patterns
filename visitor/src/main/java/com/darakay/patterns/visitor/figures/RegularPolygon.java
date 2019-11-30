@@ -4,12 +4,14 @@ import com.darakay.patterns.visitor.Visitor;
 import com.darakay.patterns.visitor.figures.Figure;
 import com.darakay.patterns.visitor.figures.Point;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @Getter
 @ToString
+@EqualsAndHashCode
 public class RegularPolygon implements Figure {
     private Point center;
     private int radius;

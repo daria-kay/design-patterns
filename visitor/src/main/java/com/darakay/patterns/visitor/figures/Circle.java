@@ -2,10 +2,12 @@ package com.darakay.patterns.visitor.figures;
 
 import com.darakay.patterns.visitor.Visitor;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class Circle implements Figure {
     private Point center;
     private int radius;
