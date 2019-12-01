@@ -1,10 +1,10 @@
 package com.adapter;
 
-import com.client.IOrmAdapter;
+import com.darakay.patterns.client.IOrmAdapter;
 import com.orm.secondormlib.DbUserEntity;
 import com.orm.secondormlib.DbUserInfoEntity;
 import com.orm.secondormlib.ISecondOrm;
-import com.client.User;
+import com.darakay.patterns.client.User;
 
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package com.message;
+package com.darakay.patterns.message;
 
 public class Message implements IMessage{
     private String from;

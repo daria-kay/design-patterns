@@ -1,10 +1,10 @@
 package com.adapter;
 
-import com.client.IOrmAdapter;
+import com.darakay.patterns.client.IOrmAdapter;
 import com.orm.firstormlib.IFirstOrm;
 import com.orm.secondormlib.DbUserEntity;
 import com.orm.secondormlib.DbUserInfoEntity;
-import com.client.User;
+import com.darakay.patterns.client.User;
 
 public class FirstOrmAdapter implements IOrmAdapter {
 

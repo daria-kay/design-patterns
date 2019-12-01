@@ -1,4 +1,4 @@
-package com.message;
+package com.darakay.patterns.message;
 
 public abstract class MessageDecorator implements IMessage {
     protected IMessage message;

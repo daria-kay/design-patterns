@@ -1,17 +1,17 @@
 package com;
 
-import com.client.ChatClient;
-import com.message.Message;
+import com.darakay.patterns.Chat;
+import com.darakay.patterns.client.ChatClient;
+import com.darakay.patterns.client.IChatClient;
+import com.darakay.patterns.message.Message;
 
 public class Application {
 
     public static void main(String[] args) {
-        ChatClient client = new ChatClient();
+        IChatClient anonymous = Chat.createChatClient(false, true);
+        anonymous.sendMessage(new Message("User1", "User2", "Text"));
 
-        //anonymous
-        client.sendMessage(new Message("User1", "User2", "Text"), false, true);
-
-        //encrypt
-        client.sendMessage(new Message("User1", "User2", "Text"), true, false);
+        IChatClient encrypted = Chat.createChatClient(true, false);
+        encrypted.sendMessage(new Message("User1", "User2", "Text"));
     }
 }

@@ -1,4 +1,4 @@
-package com.client;
+package com.darakay.patterns.client;
 
 import com.orm.secondormlib.DbUserEntity;
 import com.orm.secondormlib.DbUserInfoEntity;

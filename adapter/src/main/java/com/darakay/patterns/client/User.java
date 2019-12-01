@@ -1,4 +1,4 @@
-package com.client;
+package com.darakay.patterns.client;
 
 import com.orm.IDbEntity;
 import com.orm.secondormlib.DbUserEntity;
