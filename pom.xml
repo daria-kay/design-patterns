@@ -15,6 +15,7 @@
         <module>chainofresp</module>
         <module>state</module>
         <module>visitor</module>
+        <module>abstractfactory</module>
     </modules>
 
     <properties>
